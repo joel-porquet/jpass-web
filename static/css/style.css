@@ -1,0 +1,27 @@
+html {
+  overflow-y: scroll;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+
+div.container {
+    max-width: 400px;
+}
+
+#push,
+#footer {
+    height: 60px;
+}
+
+.alert {
+    overflow-x: auto;
+}
