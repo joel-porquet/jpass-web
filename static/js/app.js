@@ -96,7 +96,8 @@ jQuery(document).ready(function() {
                 });
         } else if (masterpwd) {
             /* no need to send out a post request, local computation */
-            var pwd = generate(service_name);
+            var input_str = masterpwd + " " + service_name;
+            var pwd = generate(input_str);
             fillPwd(service_name, pwd);
         } else {
             /* nothing to be done until the master password is specified */
