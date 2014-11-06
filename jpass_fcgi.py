@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import jpass_web
 import os
 
