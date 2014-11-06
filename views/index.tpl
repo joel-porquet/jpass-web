@@ -20,15 +20,15 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
         <!-- sha256 -->
-        <script type="text/javascript" src="/static/js/sha256.js"></script>
+        <script type="text/javascript" src="{{get_url("static", filepath="js/sha256.js")}}"></script>
         <!-- lib jPass -->
-        <script type="text/javascript" src="/static/js/libjpass.js"></script>
+        <script type="text/javascript" src="{{get_url("static", filepath="js/libjpass.js")}}"></script>
 
         <!-- the javascript app (jquery) -->
-        <script type="text/javascript" src="/static/js/app.js"></script>
+        <script type="text/javascript" src="{{get_url("static", filepath="js/app.js")}}"></script>
 
         <!-- custom css -->
-        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="{{get_url("static", filepath="css/style.css")}}">
 
         <!-- service list -->
         <script type="text/javascript">
