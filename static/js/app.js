@@ -74,11 +74,11 @@ jQuery(document).ready(function() {
         if (jQuery.inArray(service_name, service_list) >= 0) {
             /* if the required service name belong to the service list known by the
              * server, send a post request */
-            jQuery.post("/", {"service": service_name})
+            jQuery.post("", {"service": service_name})
                 .done(function(dict) {
                     if (!dict.val) {
                         /* error: the server couldn't find the service */
-                        fillPwd(service_name, null, null, null, null, "Error!");
+                        fillPwd(service_name, null, dict.service_str, null, null, "Error!");
                     } else if (!masterpwd) {
                         /* just display info */
                         fillPwd(service_name, null, dict.service_str, dict.iden, dict.comment);
