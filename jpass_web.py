@@ -7,7 +7,7 @@ from jpass.service import Service
 bottle.SimpleTemplate.defaults["get_url"] = bottle.url
 
 def get_conf(user):
-    conf = Config("../%s/jpass.conf" % user)
+    conf = Config("/srv/jpass/%s/jpass.conf" % user)
     return conf
 
 
