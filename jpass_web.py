@@ -12,6 +12,16 @@ def get_conf(user):
     conf = Config("/srv/jpass/%s/jpass.conf" % user)
     return conf
 
+def check_auth(user):
+    remote_user = bottle.request.environ.get("REMOTE_USER")
+    if remote_user is None:
+        # we assume that if no remote_user has been defined,
+        # then we did not want authentification anyway
+        return True
+    else:
+        # else check the authentified remote_user is the same as the specified
+        # user
+        return (remote_user == user)
 
 ## routing
 # static files
@@ -26,6 +36,10 @@ def index(user=None):
     # no particular conf file
     if user is None:
         return bottle.template("index", service_list=None)
+
+    # check the user
+    if not check_auth(user):
+        return "Error: the specified user is different than the authentified user"
 
     # otherwise try to open the specified conf file
     try:
@@ -42,6 +56,10 @@ def index(user=None):
 def get_pwd(user=None):
     if user is None:
         return "Error: cannot post on empty user"
+
+    # check the user
+    if not check_auth(user):
+        return "Error: the specified user is different than the authentified user"
 
     # open the specified conf file
     try:
