@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+
+import argparse
+import configparser
+import subprocess
+import sys
+
+## default configuration file
+jpass_web_config = "/etc/webapps/jpass/jpassrc"
+
+def get_conf(confpath):
+    config = configparser.ConfigParser()
+    config.read(confpath)
+    vcspath = config["jpass"]["vcspath"]
+    hookdir = config["jpass"]["hookdir"]
+    return (vcspath, hookdir)
+
+def generate_hook(vcspath, hookpath):
+    print("Generating hook: {}".format(hookpath))
+    hook_content = """
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void)
+{{
+        char *args[] = {{"git", "-C", "{}", "pull", 0}};
+        char *envp[] = {{0}};
+
+        if (setregid(getegid(), -1) != 0) {{
+                perror("failed to drop real gid");
+                return 1;
+        }}
+        if (setreuid(geteuid(), -1)) {{
+                perror("failed to drop real uid");
+                return 1;
+        }}
+
+        execve("/usr/bin/git", args, envp);
+
+        perror("execve");
+        return 1;
+}}
+    """
+    hook_content = hook_content.format(vcspath)
+    print(hook_content)
+    subprocess.check_output(["gcc", "-xc", "-o", hookpath, "-"],
+            input = hook_content,
+            universal_newlines = True)
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('user', help="specify the user")
+
+    parser.add_argument('-c', "--conf",
+            help="specify a configuration file (default is '{}')"
+            .format(jpass_web_config))
+
+    args = parser.parse_args()
+
+    if not args.conf:
+        args.conf = jpass_web_config
+
+    vcspath, hookdir = get_conf(args.conf)
+    generate_hook(
+            vcspath + "/" + args.user,
+            hookdir + "/" + args.user
+            )
+
+def error(*objs):
+    print(*objs, file=sys.stderr)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        error("An error occurred: %s" % e)
+        sys.exit(1)
