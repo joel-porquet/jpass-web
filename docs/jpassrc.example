@@ -1,0 +1,4 @@
+[jpass]
+vcspath=/srv/jpass
+pwdname=jpass.conf
+hookdir=%(vcspath)s/hooks
