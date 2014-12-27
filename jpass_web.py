@@ -1,16 +1,25 @@
 #!/usr/bin/env python
 
 import bottle
+import configparser
+
 from jpass.config import Config
 from jpass.service import Service
 
 ## url formatting in templates
 bottle.SimpleTemplate.defaults["get_url"] = bottle.url
 
+## default configuration file
+jpass_web_config = "./jpassrc"
+
 ## utils
 def get_conf(user):
-    conf = Config("/srv/jpass/%s/jpass.conf" % user)
-    return conf
+    config = configparser.ConfigParser()
+    config.read(jpass_web_config)
+    vcspath = config["jpass"]["vcspath"]
+    pwdname = config["jpass"]["pwdname"]
+    filepath = vcspath + "/" + user + "/" + pwdname
+    return Config(filepath)
 
 def check_auth(user):
     remote_user = bottle.request.environ.get("REMOTE_USER")
