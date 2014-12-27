@@ -64,22 +64,6 @@ Now here is a possible configuration in lighttpd:
             )
         }
 
-Because of the default behavior of bottle.py (the Python framework used by
-**jpass-web**), you have to patch for it to work with the configuration above:
-
-    --- /usr/bin/bottle.py  2014-08-02 13:43:19.000000000 +0200
-    +++ tmp/bottle.py       2014-12-23 23:42:50.872687454 +0100
-    @@ -2740,7 +2740,7 @@
-     class FlupFCGIServer(ServerAdapter):
-         def run(self, handler): # pragma: no cover
-             import flup.server.fcgi
-    -        self.options.setdefault('bindAddress', (self.host, self.port))
-    +        #self.options.setdefault('bindAddress', (self.host, self.port))
-             flup.server.fcgi.WSGIServer(handler, **self.options).run()
-
-See my [article](https://joel.porquet.org/wiki/hacking/bottlepy_lighttpd/) for
-more details about why.
-
 ## Setup for git mode (advanced)
 
 This is the most interesting mode, where you can access a synchronized list of
