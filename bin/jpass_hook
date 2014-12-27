@@ -64,7 +64,7 @@ def main():
     vcspath, hookdir = get_conf(args.conf)
     generate_hook(
             vcspath + "/" + args.user,
-            hookdir + "/" + args.user
+            hookdir + "/" + args.user + ".post-update"
             )
 
 def error(*objs):
