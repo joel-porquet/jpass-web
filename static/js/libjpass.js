@@ -170,7 +170,19 @@ function clip(input_str, length) {
     return input_str.slice(0, parseInt(length));
 }
 
+function patch_str() {
+    /* because some browsers don't support String.contains() yet, we patch it
+     * with an equivalent */
+    if (!String.prototype.contains) {
+        String.prototype.contains = function(s, i) {
+            return this.indexOf(s, i) != -1;
+        }
+    }
+}
+
 function generate(input_str, length, pauth, preq) {
+    patch_str();
+
     var pwd = PasswordGenerator(input_str);
 
     var digest;
