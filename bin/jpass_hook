@@ -2,6 +2,8 @@
 
 import argparse
 import configparser
+import os
+import stat
 import subprocess
 import sys
 
@@ -46,6 +48,8 @@ int main(void)
     subprocess.check_output(["gcc", "-xc", "-o", hookpath, "-"],
             input = hook_content,
             universal_newlines = True)
+    st = os.stat(hookpath)
+    os.chmod(hookpath, st.st_mode | stat.S_ISUID | stat.S_ISGID)
 
 def main():
     parser = argparse.ArgumentParser()
