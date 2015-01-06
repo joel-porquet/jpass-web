@@ -18,7 +18,7 @@ Important: **jpass-web** generates passwords locally, i.e. in your browser
 using Javascript. It means that your passwords are never exchanged on the
 Internet.
 
-![jpass-web demo](https://joel.porquet.org/cgit/cgit.cgi/jpass-web.git/plain/docs/demo.gif)
+![jpass-web demo](docs/demo.gif)
 
 ## Setup (basic)
 
@@ -167,8 +167,8 @@ password), it still gives access to sensitive information (identifier, etc.)
 
 To protect the URL with a simple protection, you can add the following lines to
 your lighttpd configuration (see the
-[lighttpd documentation](http://redmine.lighttpd.net/projects/1/wiki/docs_modauth)
-for more information):
+[documentation](http://redmine.lighttpd.net/projects/1/wiki/docs_modauth) for
+more information):
 
     # authentication required when accessing a user path but not static url
     $HTTP["url"] =~ "^" + jpass_url + "/" + jpass_fcgi + "/(?!(static)).+$" {
@@ -185,4 +185,11 @@ Call it a good idea or not, but the authenticated user must be the same as the
 user specified to **jpass-web**. So if *toto* wants to access
 `http://yourwebsite/jpass/toto`, he must authenticate himself as *toto* with lighttpd.
 
-[jpass]: https://joel.porquet.org/cgit/cgit.cgi/jpass.git/about/
+# Mirrors
+
+This project is mirrored on:
+
+* [github](https://github.com/joel-porquet/jpass-web)
+* [my cgit](https://joel.porquet.org/cgit/cgit.cgi/jpass-web.git/about/)
+
+[jpass]: https://github.com/joel-porquet/jpass
