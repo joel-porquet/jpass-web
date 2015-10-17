@@ -16,9 +16,6 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
         <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-        <!-- font-awesome -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
         <!-- sha256 -->
         <script type="text/javascript" src="{{get_url("static", filepath="js/sha256.js")}}"></script>
         <!-- lib jPass -->
@@ -50,7 +47,7 @@ var service_list = [
                     <h2>jPass</h2>
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-cog fa-fw"></i></span>
+                            <span class="input-group-addon"><i class="icon-cog"></i></span>
                             <input type="text" class="form-control"
                             placeholder="Service name" id="service" required
                             autofocus autocomplete="off">
@@ -58,7 +55,7 @@ var service_list = [
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <span class="input-group-addon"><i class="icon-key"></i></span>
                             <input type="password" class="form-control"
                             placeholder="Master password" id="masterpwd">
                         </div>
