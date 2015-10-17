@@ -61,9 +61,12 @@ jQuery(document).ready(function() {
     /* autocomplete service input textbox */
     if (service_list) {
         /* only if there is an existing service list sent from server */
-        jQuery("#service").autocomplete({
-            source: service_list.sort()
-        });
+        var list = document.getElementById("service_datalist");
+        for (var i = 0; i < service_list.length; i++) {
+            var option = document.createElement("option");
+            option.value = service_list[i];
+            list.appendChild(option);
+        }
     }
 
     /* form submitting */
