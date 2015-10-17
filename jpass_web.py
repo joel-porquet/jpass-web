@@ -53,8 +53,9 @@ def index(user=None):
     # otherwise try to open the specified conf file
     try:
         conf = get_conf(user)
-    except Exception:
-        return "Error: the specified user is unknow or unable to open the configuration file"
+    except Exception as e:
+        return ("Error: the specified user is unknown or unable to open the "
+                "configuration file")
         #return bottle.template("An error occured: {{e}}", e = e);
 
     return bottle.template("index",
@@ -74,7 +75,8 @@ def get_pwd(user=None):
     try:
         conf = get_conf(user)
     except Exception as e:
-        return "Error: the specified user is unknow or unable to open the configuration file"
+        return ("Error: the specified user is unknow or unable to open the "
+                "configuration file")
         #return bottle.template("An error occured: {{e}}", e = e);
 
     # get the service from the conf
