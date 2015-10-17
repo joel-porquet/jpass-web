@@ -93,7 +93,7 @@ var service_list = [
 
         <footer>
             <div class="container">
-                <p>© 2014 Joël Porquet</p>
+                <p>© 2014-2015 Joël Porquet</p>
             </div>
         </footer>
     </body>
