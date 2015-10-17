@@ -18,8 +18,6 @@ Important: **jpass-web** generates passwords locally, i.e. in your browser
 using Javascript. It means that your passwords are never exchanged on the
 Internet.
 
-![jpass-web demo](docs/demo.gif)
-
 ## Setup (basic)
 
 With the basic setup, you can use **jpass-web** in standalone mode.
