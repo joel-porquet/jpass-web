@@ -47,7 +47,7 @@ var service_list = [
                             <span class="input-group-addon"><i class="icon-cog"></i></span>
                             <input type="text" class="form-control"
                             placeholder="Service name" id="service" required
-                            autofocus autocomplete="off"
+                            autofocus
                             list="service_datalist">
                             <datalist id="service_datalist"></datalist>
                         </div>
