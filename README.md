@@ -1,5 +1,12 @@
 # jpass-web: a web-frontend for jpass password manager/generator
 
+## Unmaintained project
+
+**I no longer use or develop this project, as I have switched to Bitwarden to
+handle all my passwords.**
+
+## Introduction
+
 While [jpass][jpass] is a flexible and configurable password manager and
 generator, **jpass-web** is a web-frontend for it.
 
